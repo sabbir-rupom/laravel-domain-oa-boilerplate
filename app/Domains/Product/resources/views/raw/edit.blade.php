@@ -1,10 +1,8 @@
 <div class="card">
     <div class="card-body">
-        <div class="card-title">
-            {{ $title }}
-        </div>
+        <h5 class="fw-bold text-center mb-4">Product Edit Form</h5>
 
-        <form class="form-ajax needs-validation adjust-list" action="{{ route('unit.edit', $unit) }}" method="POST"
+        <form class="form-ajax needs-validation" action="{{ route('product.update', $product) }}" method="POST"
             novalidate="novalidate">
             @csrf
             @method('put')
@@ -13,7 +11,7 @@
                     Name <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" class="form-control" value="{{ $unit->name }}" required placeholder="Enter text here">
+                    <x-form.element.text-input name="name" value="{{ $product->name }}" required />
                 </div>
             </div>
             <div class="row mb-3">
@@ -21,36 +19,34 @@
                     Code <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="code" value="{{ $unit->code }}" class="form-control" required placeholder="Enter unique code">
+                    <x-form.element.text-input name="code" value="{{ $product->code }}" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">
-                    Unit Head <sup class="text-danger">*</sup>
+                    Stock <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <x-form.element.select-single value="{{ $unit->head }}" name="head" type="select" id="select--unitHead" :dataArray="$heads" required />
+                    <input type="number" name="stock" class="form-control" value="{{ $product->stock }}"
+                        autocomplete="off" required min="0">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">
-                    Active ?
+                    Price
                 </label>
                 <div class="col-sm-9">
-                    <div class="form-check form-check-primary pt-2">
-                        <input class="form-check-input" value="1" {{ $unit->status ? 'checked' : '' }} name="status" type="checkbox">
-                    </div>
+                    <input type="number" step="any" name="price" class="form-control" autocomplete="off" required
+                        value="{{ $product->price }}" min="0">
                 </div>
             </div>
 
             <div class="d-flex justify-content-end">
-                <input type="hidden" name="id" value="{{ $unit->id }}" />
+                <input type="hidden" name="id" value="{{ $product->id }}" />
                 <button type="submit" class="btn btn-success w-md me-2">Save</button>
-                <button type="button" class="btn btn-warning w-md form-reset" 
-                data-url="{{ route('unit.form') }}"
-                data-action="form"
-                >Reset</button>
+                <button type="button" class="btn btn-warning w-md form-reset" data-url="{{ route('product.form') }}"
+                    data-action="form">Reset</button>
             </div>
         </form>
 

@@ -17,6 +17,8 @@ return [
         \App\Console\Commands\Domain\Create::class,
         \App\Console\Commands\Domain\Controller::class,
         \App\Console\Commands\Domain\Model::class,
+        \App\Console\Commands\Domain\FormRequest::class,
+
     ],
 
     /*

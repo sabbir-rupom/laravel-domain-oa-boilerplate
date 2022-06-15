@@ -1,3 +1,32 @@
 /**
 * App sass files
 */
+
+.bread-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px !important;
+}
+
+.breadcrumb-item {
+  > a {
+    color: #495057;
+    text-decoration: none !important;
+  }
+
+  &.active {
+    color: #74788d;
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    color: red;
+}

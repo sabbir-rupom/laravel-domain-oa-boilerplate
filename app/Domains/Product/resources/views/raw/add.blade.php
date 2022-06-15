@@ -1,10 +1,8 @@
 <div class="card">
     <div class="card-body">
-        <div class="card-title">
-            {{ $title }}
-        </div>
+        <h5 class="fw-bold text-center mb-4">Product Create Form</h5>
 
-        <form class="form-ajax needs-validation" action="{{ route('unit.save') }}" method="POST" 
+        <form class="form-ajax needs-validation" action="{{ route('product.store') }}" method="POST"
             novalidate="novalidate">
             @csrf
             <div class="row mb-3">
@@ -12,7 +10,8 @@
                     Name <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="name" class="form-control" autocomplete="off" required placeholder="Enter text here">
+                    <input type="text" name="name" class="form-control" autocomplete="off" required
+                        placeholder="Enter text here">
                 </div>
             </div>
             <div class="row mb-3">
@@ -20,26 +19,27 @@
                     Code <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <input type="text" name="code" class="form-control" autocomplete="off" required placeholder="Enter unique code">
+                    <input type="text" name="code" class="form-control" autocomplete="off" required
+                        placeholder="Enter unique code">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">
-                    Unit Head <sup class="text-danger">*</sup>
+                    Stock <sup class="text-danger">*</sup>
                 </label>
                 <div class="col-sm-9">
-                    <x-form.element.select-single name="head" type="select" id="select--unitHead" :dataArray="$heads" required />
+                    <input type="number" name="stock" class="form-control" autocomplete="off" required
+                        placeholder="Enter number" min="0">
                 </div>
             </div>
-            
+
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">
-                    Active ?
+                    Price
                 </label>
                 <div class="col-sm-9">
-                    <div class="form-check form-check-primary pt-2">
-                        <input class="form-check-input" value="1" name="status" type="checkbox" >
-                    </div>
+                    <input type="number" step="any" name="price" class="form-control" autocomplete="off" required
+                        value="0.0" min="0">
                 </div>
             </div>
 

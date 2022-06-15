@@ -3,10 +3,9 @@
 namespace App\Domains\Product\Http\Controllers;
 
 use App\Domains\Core\Http\Controllers\BaseController;
+use App\Domains\Product\Http\Requests\ProductSaveRequest;
 use App\Domains\Product\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
 
 class ApiController extends BaseController
 {
@@ -63,29 +62,15 @@ class ApiController extends BaseController
         ]);
     }
 
-    public function save(Request $request)
+    public function save(ProductSaveRequest $request)
     {
-        $validate = $this->_requestValidate($request);
-        if ($validate) {
-            return $validate;
-        }
+        $productModel = new Product();
 
-        if ($request->id && intval($request->id) > 0) {
-            $product = Product::where('id', intval($request->id))->first();
-            if ($product) {
-                $product->update([
-                    'name' => $request->name,
-                    'code' => $request->code,
-                    'stock' => intval($request->head),
-                    'price' => floatval($request->price),
-                ]);
-            }
-        } else {
-            $product = Product::create([
-                'name' => $request->name,
-                'code' => $request->code,
-                'stock' => intval($request->head),
-                'price' => floatval($request->price),
+        $result = $productModel->store($request);
+
+        if(!$result) {
+            return $this->response([
+                'message' => $productModel->error,
             ]);
         }
 
@@ -117,31 +102,5 @@ class ApiController extends BaseController
             'success' => false,
             'message' => 'Product not found',
         ]);
-    }
-
-    /**
-     * Form submit data validation
-     *
-     * @param Request $request
-     * @return void
-     */
-    private function _requestValidate(Request $request)
-    {
-        $validationRules = [
-            'code' => 'required|string|unique:units,code',
-            'head' => 'required|integer',
-            'name' => 'required|string',
-        ];
-
-        $validator = Validator::make($request->all(), $validationRules);
-
-        if ($validator->fails()) {
-            return $this->response([
-                'message' => $validator->errors()->first(),
-            ], Response::HTTP_BAD_REQUEST);
-
-        }
-
-        return false;
     }
 }

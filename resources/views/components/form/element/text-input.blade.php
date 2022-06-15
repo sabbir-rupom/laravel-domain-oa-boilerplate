@@ -10,15 +10,15 @@
     'state' => '',
     'helpText' => '',
     'dataAttr' => [],
-    '$rangeArray' => [],
+    'rangeArray' => [],
     'rows' => 4
 ])
 
 @php
 $class = isset($class) ? $class : '';
-if (($name && $errors->has($name)) || $state === 'error') {
-    $class .= ' is-invalid';
-}
+// if (($name && $errors->has($name)) || $state === 'error') {
+//     $class .= ' is-invalid';
+// }
 @endphp
 
 @if ($type === 'textarea')

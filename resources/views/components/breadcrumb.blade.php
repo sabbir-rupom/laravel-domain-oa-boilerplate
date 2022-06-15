@@ -6,28 +6,26 @@ $li_2 = isset($li_2) ? $li_2 : '';
 $li_3 = isset($li_3) ? $li_3 : '';
 $li_active = isset($li_active) ? $li_active : (isset($title) ? $title : '');
 @endphp
-<div class="row">
+<div class="row mb-3">
     <div class="col-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+        <div class="d-sm-flex justify-content-between">
 
             @isset($title)
-                <h4 class="mb-sm-0 font-size-18">{{ $title }}</h4>
+                <h4 class="mb-sm-0 bread-title font-size-18">{{ $title }}</h4>
             @endisset
 
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{!! $url_1 !!}">{{ $li_1 }}</a></li>
-                    @if (!empty($li_2))
-                        <li class="breadcrumb-item"><a href="{!! $url_2 !!}">{{ $li_2 }}</a></li>
-                    @endif
-                    @if (!empty($li_3))
-                        <li class="breadcrumb-item"><a href="{!! $url_3 !!}">{{ $li_3 }}</a></li>
-                    @endif
-                    @if ($li_active)
-                        <li class="breadcrumb-item active">{{ $li_active }}</li>
-                    @endif
-                </ol>
-            </div>
+            <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a href="{!! $url_1 !!}">{{ $li_1 }}</a></li>
+                @if (!empty($li_2))
+                    <li class="breadcrumb-item"><a href="{!! $url_2 !!}">{{ $li_2 }}</a></li>
+                @endif
+                @if (!empty($li_3))
+                    <li class="breadcrumb-item"><a href="{!! $url_3 !!}">{{ $li_3 }}</a></li>
+                @endif
+                @if ($li_active)
+                    <li class="breadcrumb-item active">{{ $li_active }}</li>
+                @endif
+            </ol>
 
         </div>
     </div>

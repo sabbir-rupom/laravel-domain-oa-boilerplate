@@ -12,7 +12,7 @@ class Create extends Command
      *
      * @var string
      */
-    protected $signature = 'domain:new {domain}';
+    protected $signature = 'domain:new {domain}  {--api}';
 
     /**
      * The console command description.
@@ -107,12 +107,21 @@ class Create extends Command
             'config',
             'Exceptions',
             'Services',
-            'resources/css',
-            'resources/js',
-            'resources/views',
             'database/migrations',
             'database/seeders',
         ];
+
+        $guards = ['api'];
+
+        if (!$this->option('api')) {
+            array_push($folders,
+                'resources/css',
+                'resources/js',
+                'resources/views'
+            );
+
+            array_push($guards, 'web');
+        }
 
         foreach ($folders as $folder) {
             $newFolder = $newDomainDir . '/' . $folder;
@@ -126,7 +135,7 @@ class Create extends Command
         fclose($fHandler);
 
         // Create route files
-        foreach (['web', 'api'] as $v) {
+        foreach ($guards as $v) {
             # code...
             $fHandler = fopen("$newDomainDir/routes/$v.php", "w") or die("Unable to create web route file!");
             fwrite($fHandler, "<?php\n\nuse Illuminate\Support\Facades\Route;");

@@ -10,6 +10,6 @@ Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
     Route::post('/store', [ApiController::class, 'save'])->name('store');
     Route::get('/edit/{product}', [ApiController::class, 'edit'])->name('edit');
     Route::put('/edit/{product}', [ApiController::class, 'save'])->name('update');
-    Route::delete('/edit/{product}', [ApiController::class, 'remove']);
+    Route::delete('/edit/{product}', [ApiController::class, 'remove'])->name('destroy');
 
 });
