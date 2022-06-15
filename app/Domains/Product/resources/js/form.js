@@ -135,7 +135,10 @@ function callAjax(url, param, method, obj = null)
                         $('.product-form').html(json.data);
                     } else {
                         $('.product-list').html(json.data);
+                        $('.item-count').html($('.product-list table tr').length - 1);
+
                     }
+
                 } else {
 
                     if (obj !== null && method.toUpperCase() === 'DELETE') {
