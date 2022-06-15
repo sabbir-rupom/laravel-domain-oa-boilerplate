@@ -1,17 +1,15 @@
 <?php
 
-use App\Domains\SimplePage\Http\Controllers\ApiController;
+use App\Domains\Product\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware([])->group(function () {
-    /**
-     * Unit Routes
-     */
-    Route::any('/unit/search', [ApiController::class, 'search'])->name('unit.search');
-    Route::get('/unit/form', [ApiController::class, 'addform'])->name('unit.form');
-    Route::post('/unit/save', [ApiController::class, 'save'])->name('unit.save');
-    Route::get('/unit/edit/{unit}', [ApiController::class, 'edit'])->name('unit.edit');
-    Route::put('/unit/edit/{unit}', [ApiController::class, 'save']);
-    Route::delete('/unit/edit/{unit}', [ApiController::class, 'remove']);
-    
+Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+
+    Route::any('/search', [ApiController::class, 'search'])->name('search');
+    Route::get('/form', [ApiController::class, 'addform'])->name('form');
+    Route::post('/store', [ApiController::class, 'save'])->name('store');
+    Route::get('/edit/{product}', [ApiController::class, 'edit'])->name('edit');
+    Route::put('/edit/{product}', [ApiController::class, 'save'])->name('update');
+    Route::delete('/edit/{product}', [ApiController::class, 'remove']);
+
 });

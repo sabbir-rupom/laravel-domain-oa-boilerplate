@@ -1,36 +1,19 @@
-<div class="topnav">
-    <div class="container-fluid">
-        <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-
-            <div class="collapse navbar-collapse" id="topnav-menu-content">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link arrow-none" href="{{ url('/index') }}" role="button">
-                            <i class="bx bx-home-circle me-2"></i><span
-                                key="t-starter-page">@lang('translation.Starter_Page')</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link arrow-none active" href="{{ url('/layouts-horizontal') }}" role="button">
-                            <i class="bx bx-layout me-2"></i><span key="t-horizontal">Horizontal</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-auth" role="button">
-                            <i class="bx bx-user-circle me-2"></i><span key="t-authentication">Authentication</span>
-                            <div class="arrow-down"></div>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-auth">
-                            <a href="#" class="dropdown-item" key="t-login">Menu 1</a>
-                            <a href="#" class="dropdown-item" key="t-login-2">Menu 2</a>
-                            <a href="#" class="dropdown-item"
-                                key="t-register">Menu 3</a>
-                            
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">Laravel DOA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Products</a>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
+</nav>

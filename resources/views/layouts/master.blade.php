@@ -30,8 +30,8 @@
     <header>
         @include('layouts.include.navbar')
     </header>
-    <div class="main-content">
-        <div class="container-fluid">
+    <div class="main-content py-5">
+        <div class="container">
             @yield('content')
         </div>
     </div>

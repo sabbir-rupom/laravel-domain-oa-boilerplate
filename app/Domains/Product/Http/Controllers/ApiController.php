@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domains\SimplePage\Http\Controllers;
+namespace App\Domains\Product\Http\Controllers;
 
 use App\Domains\Core\Http\Controllers\BaseController;
-use App\Domains\SimplePage\Models\Unit;
+use App\Domains\Product\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
@@ -13,9 +13,8 @@ class ApiController extends BaseController
 
     public function addform()
     {
-        $viewHtml = view('simple_page_view::raw.add')->with([
-            'title' => 'Unit Create Form',
-            'heads' => Unit::unitHeads(),
+        $viewHtml = view('product_view::raw.add')->with([
+            'title' => 'Product Create Form',
         ])->render();
 
         return $this->response([
@@ -28,18 +27,16 @@ class ApiController extends BaseController
 
     public function search(Request $request)
     {
-        $units = Unit::select('name', 'head', 'status', 'code', 'id');
+        $modelObj = Product::select('name', 'stock', 'price', 'code', 'id');
 
         if ($request->term && strlen($request->term) > 0) {
-            $units->where('name', 'like', "%{$request->term}%")->orWhere('code', 'like', "%{$request->term}%");
+            $modelObj = $modelObj->where('name', 'like', "%{$request->term}%")->orWhere('code', 'like', "%{$request->term}%");
         }
 
-        $result = Unit::modifyValue(
-            $units->orderBy('name', 'asc')->get()
-        );
+        $products = $modelObj->orderBy('name', 'asc')->get();
 
-        $viewHtml = view('simple_page_view::raw.list')->with([
-            'units' => $result,
+        $viewHtml = view('product_view::raw.list')->with([
+            'products' => $products,
             'term' => $request->term,
         ])->render();
 
@@ -51,12 +48,11 @@ class ApiController extends BaseController
         ]);
     }
 
-    public function edit(Unit $unit)
+    public function edit(Product $product)
     {
-        $viewHtml = view('simple_page_view::raw.edit')->with([
-            'unit' => $unit,
-            'title' => 'Unit Edit Form',
-            'heads' => Unit::unitHeads(),
+        $viewHtml = view('product_view::raw.edit')->with([
+            'product' => $product,
+            'title' => 'Product Edit Form',
         ])->render();
 
         return $this->response([
@@ -75,53 +71,51 @@ class ApiController extends BaseController
         }
 
         if ($request->id && intval($request->id) > 0) {
-            $unit = Unit::where('id', intval($request->id))->first();
-            if ($unit) {
-                $unit->update([
+            $product = Product::where('id', intval($request->id))->first();
+            if ($product) {
+                $product->update([
                     'name' => $request->name,
                     'code' => $request->code,
-                    'head' => $request->head,
-                    'status' => boolval($request->status),
+                    'stock' => intval($request->head),
+                    'price' => floatval($request->price),
                 ]);
             }
         } else {
-            $unit = Unit::create([
+            $product = Product::create([
                 'name' => $request->name,
                 'code' => $request->code,
-                'head' => $request->head,
-                'status' => boolval($request->status),
+                'stock' => intval($request->head),
+                'price' => floatval($request->price),
             ]);
         }
 
-        $units = Unit::modifyValue(
-            Unit::orderBy('name', 'asc')->get()
-        );
+        $products = Product::orderBy('name', 'asc')->get();
 
-        $viewHtml = view('simple_page_view::raw.list')->with(['units' => $units])->render();
+        $viewHtml = view('product_view::raw.list')->with(['products' => $products])->render();
 
         return $this->response([
             'success' => true,
-            'message' => 'Unit saved successfully',
+            'message' => 'Product saved successfully',
             'html' => true,
             'data' => $viewHtml,
         ]);
 
     }
 
-    public function remove(Unit $unit)
+    public function remove(Product $product)
     {
-        if (isset($unit->id) && $unit->id > 0) {
-            $unit->delete();
+        if (isset($product->id) && $product->id > 0) {
+            $product->delete();
 
             return $this->response([
                 'success' => true,
-                'message' => 'Unit deleted successfully',
+                'message' => 'Product has been deleted',
             ]);
         }
 
         return $this->response([
             'success' => false,
-            'message' => 'Unit not found',
+            'message' => 'Product not found',
         ]);
     }
 

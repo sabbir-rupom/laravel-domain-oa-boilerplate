@@ -80,6 +80,10 @@ mix.copyDirectory(folder.src + "fonts", out);
 var out = folder.dist_assets + "css";
 mix.copyDirectory(folder.src + "css", out);
 
+// copy all images
+var out = folder.dist_assets + "images";
+mix.copyDirectory(folder.src + "images", out);
+
 /**
  * ------------------------------------------------------------------------------
  * ------------------------------------------------------------------------------

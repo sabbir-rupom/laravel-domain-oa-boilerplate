@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\SimplePage\Models;
+namespace App\Domains\Product\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

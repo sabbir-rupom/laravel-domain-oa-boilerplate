@@ -1,13 +1,9 @@
 <?php
 
-use App\Domains\SimplePage\Http\Controllers\ApiController;
-use App\Domains\SimplePage\Http\Controllers\UnitController;
+use App\Domains\Product\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('simplepage')->group(function () {
-    Route::get('/', function () {
-        return 'test';
-    });
+Route::prefix('product')->group(function () {
+    Route::redirect('/', '/list', 301);
+    Route::get('/list', [IndexController::class, 'index'])->name('product.list');
 });
-
-Route::get('/unit', [UnitController::class, 'index'])->name('unit.list');
