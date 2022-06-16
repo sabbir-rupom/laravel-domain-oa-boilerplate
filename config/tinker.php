@@ -18,6 +18,8 @@ return [
         \App\Console\Commands\Domain\Controller::class,
         \App\Console\Commands\Domain\Model::class,
         \App\Console\Commands\Domain\FormRequest::class,
+        \App\Console\Commands\Domain\Seeder::class,
+        \App\Console\Commands\Domain\Middleware::class,
 
     ],
 
