@@ -18,7 +18,7 @@ class Controller extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Create a new controller class under domain';
 
     /**
      * Create a new command instance.

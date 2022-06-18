@@ -2,16 +2,26 @@
 
 namespace App\Domains\Core\Services;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Cache;
 
 class Bootstrap
 {
     protected $domains;
     protected $path;
-    protected $keys;
-    protected $templates;
+    private $kernel;
 
-    public function initDomains()
+    public static function init()
+    {
+        $app = new Self();
+        $app->path = app_path('Domains');
+        $app->kernel = app(Kernel::class);
+
+        $app->findDomains()->run();
+        return $app->domains;
+    }
+
+    public function findDomains()
     {
         $this->domains = Cache::get('app_domains');
 
@@ -22,7 +32,13 @@ class Bootstrap
                     continue;
                 }
                 $config = include $path . '/config/domain.php';
+
                 $domainName = basename($path);
+
+                if (isset($config['enable']) && !$config['enable'] && strtolower($domainName) !== 'core') {
+                    continue;
+                }
+
                 $this->domains[] = [
                     'config' => $config,
                     'path' => $path,
@@ -34,25 +50,40 @@ class Bootstrap
             Cache::put('app_domains', $this->domains, 300);
         }
 
+        return $this;
+
     }
 
-    public function initViews()
-    {
+    public function run() {
+
         if ($this->domains) {
             foreach ($this->domains as $d) {
-                view()->addNamespace("{$d['base']}_view", $d['path'] . "/resources/views");
+                $this->setViews($d);
+                $this->setMiddlewares($d['config']);
             }
         }
+
     }
 
-    public static function init()
+    public function setViews(array $domain)
     {
-        $run = new Self();
-        $run->path = app_path('Domains');
+        view()->addNamespace("{$domain['base']}_view", $domain['path'] . "/resources/views");
+    }
 
-        $run->initDomains();
-        $run->initViews();
-        
-        return $run->domains;
+    public function setMiddlewares(array $config)
+    {
+        if(isset($config['middleware']) && !empty($config['middleware'])) {
+            foreach ($config['middleware'] as $middleware) {
+                $this->kernel->pushMiddleware($middleware);
+            }
+        }
+
+        if(isset($config['middleware-group']) && !empty($config['middleware-group'])) {
+            foreach ($config['middleware-group'] as $group => $middleware) {
+                $this->kernel->appendMiddlewareToGroup($group, $middleware);
+            }
+        }
+
+        return $this;
     }
 }
