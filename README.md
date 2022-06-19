@@ -10,6 +10,45 @@
 
 Laravel boilerplate for building Domain Oriented Architecture based web application. (Current: Laravel 8.\*)
 
+## Installation
+- Clone the git repository `git clone https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate.git`
+- Install & Update libraries with `composer update`
+- Rename and set your Server Configuration in `.env`.
+- Run Migration and Seeder `php artisan migrate:refresh --seed` 
+
+## Development Guide
+
+* Enter command to create new Domain space: `php artisan domain:new DomainName`
+    * For REST-API, you can hit command like: `php artisan domain:new YourDomain --api`
+
+* Create new controller: `php artisan domain:new:controller DomainName ControllerName`
+
+* Create new request: `php artisan domain:new:request DomainName RequestName`
+
+* Create new middleware: `php artisan domain:new:middleware DomainName MiddlewareName`
+
+* Create new model: `php artisan domain:new:model DomainName ModelName`
+    * If you wish to create a create-table-migration file as well: `php artisan domain:new:model DomainName ModelName -m`
+
+* Create new migration: `php artisan domain:new:migration DomainName name_table_migration`
+    * You can use the options like `--create` , `--table` , `--path` command options like the existing `make:migration` command structure
+
+* Create new seeder: `php artisan domain:new:seeder DomainName SeederName`
+
+Domain core service will automatically detect all the domain changes and will initialize each domain routes, migrations, seeders etc. during application run.
+
+Do not forget to clear cache and optimize routes if any new major changes occured inside Domains.
+
+### Domain Configuration
+
+Configuration parameter of each Domain should be defined in `app\Domains\DomainName\config\domain.php`
+
+You can retrieve enabled domain information through `\Illuminate\Support\Facades\Cache::get('app_domains')`
+
+### CSS / JS compile with Laravel mix
+
+
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
