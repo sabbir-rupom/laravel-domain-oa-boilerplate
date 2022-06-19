@@ -56,7 +56,7 @@ class Bootstrap
      *
      * @return Bootstrap
      */
-    public static function domains():Bootstrap
+    public static function domains(): Bootstrap
     {
         $app = new Self();
         $app->path = app_path('Domains');
@@ -92,7 +92,7 @@ class Bootstrap
     }
 
     /**
-     * Register view paths for domain views 
+     * Register view paths for domain views
      *
      * @param array $domain Active domain array
      * @return Bootstrap
@@ -110,7 +110,7 @@ class Bootstrap
      * @param array $config
      * @return Bootstrap
      */
-    public function setMiddlewares(array $config):Bootstrap
+    public function setMiddlewares(array $config): Bootstrap
     {
         if (isset($config['middleware']) && !empty($config['middleware'])) {
             foreach ($config['middleware'] as $middleware) {
