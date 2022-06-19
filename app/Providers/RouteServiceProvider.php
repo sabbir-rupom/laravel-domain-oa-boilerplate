@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
             /**
              * Init domain configuration
              */
-            $domains = Bootstrap::init();
+            $domains = Bootstrap::domains()->get();
 
             Route::middleware('web')
                 ->namespace($this->namespace)

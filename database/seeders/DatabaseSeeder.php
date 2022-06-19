@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
      */
     protected function scanDomainSeeders()
     {
-        $domains = Bootstrap::init();
+        $domains = Bootstrap::domains()->get();
 
         $this->command->info(PHP_EOL . 'Scanning for domain seeders: ');
 

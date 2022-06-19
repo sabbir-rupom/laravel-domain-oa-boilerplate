@@ -15,7 +15,7 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $domains = Bootstrap::init();
+        $domains = Bootstrap::domains()->get();
 
         if (is_array($domains) && count($domains) > 0) {
             foreach ($domains as $d) {

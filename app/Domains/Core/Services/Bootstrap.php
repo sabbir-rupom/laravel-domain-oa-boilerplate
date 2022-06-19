@@ -11,23 +11,45 @@ class Bootstrap
     protected $path;
     private $kernel;
 
-    public static function init()
+    public function init()
+    {
+        $this->kernel = app(Kernel::class);
+
+        if ($this->domains) {
+            foreach ($this->domains as $d) {
+                $this->setViews($d);
+                $this->setMiddlewares($d['config']);
+            }
+        }
+
+        return $this->domains;
+    }
+
+    public function registerServices()
+    {
+        // foreach ($this->domains as $d) {
+
+        //     $domainProviderClass = '\App\Domains\\' . $d['name'] . '\\Providers\\DomainServiceProvider';
+        //     if (class_exists($domainProviderClass)) {
+        //         dd('1111');
+        //     }
+        // }
+    }
+
+    public function get()
+    {
+        return $this->domains;
+    }
+
+    public static function domains()
     {
         $app = new Self();
         $app->path = app_path('Domains');
-        $app->kernel = app(Kernel::class);
+        $app->domains = Cache::get('app_domains');
 
-        $app->findDomains()->run();
-        return $app->domains;
-    }
-
-    public function findDomains()
-    {
-        $this->domains = Cache::get('app_domains');
-
-        if (empty($this->domains)) {
-            $this->domains = [];
-            foreach (array_filter(glob($this->path . '/*', GLOB_ONLYDIR)) as $path) {
+        if (empty($app->domains)) {
+            $app->domains = [];
+            foreach (array_filter(glob($app->path . '/*', GLOB_ONLYDIR)) as $path) {
                 if (!is_file($path . '/config/domain.php')) {
                     continue;
                 }
@@ -39,7 +61,7 @@ class Bootstrap
                     continue;
                 }
 
-                $this->domains[] = [
+                $app->domains[] = [
                     'config' => $config,
                     'path' => $path,
                     'name' => $domainName,
@@ -47,21 +69,10 @@ class Bootstrap
                 ];
             }
 
-            Cache::put('app_domains', $this->domains, 300);
+            Cache::put('app_domains', $app->domains, 300);
         }
 
-        return $this;
-
-    }
-
-    public function run() {
-
-        if ($this->domains) {
-            foreach ($this->domains as $d) {
-                $this->setViews($d);
-                $this->setMiddlewares($d['config']);
-            }
-        }
+        return $app;
 
     }
 
@@ -72,13 +83,13 @@ class Bootstrap
 
     public function setMiddlewares(array $config)
     {
-        if(isset($config['middleware']) && !empty($config['middleware'])) {
+        if (isset($config['middleware']) && !empty($config['middleware'])) {
             foreach ($config['middleware'] as $middleware) {
                 $this->kernel->pushMiddleware($middleware);
             }
         }
 
-        if(isset($config['middleware-group']) && !empty($config['middleware-group'])) {
+        if (isset($config['middleware-group']) && !empty($config['middleware-group'])) {
             foreach ($config['middleware-group'] as $group => $middleware) {
                 $this->kernel->appendMiddlewareToGroup($group, $middleware);
             }

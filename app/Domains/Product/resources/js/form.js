@@ -4,40 +4,11 @@ $(function ()
 {
     'use strict'
 
+
     $('form.needs-validation').each(function ()
     {
-
-        $(this).validate();
-
-        let rInputs = $(this).find('[required]'), $this = $(this);
-
-        for (const i in rInputs) {
-            if (Object.hasOwnProperty.call(rInputs, i)) {
-                let e = rInputs[i];
-                if (e instanceof HTMLInputElement) {
-                    $(e).on('input', function ()
-                    {
-                        if ($(this).val() === '') {
-                            $this.find('[type="submit"]').attr('disabled', 'disabled')
-                        } else {
-                            $this.find('[type="submit"]').removeAttr('disabled');
-                        }
-                    })
-                } else if (e instanceof HTMLSelectElement) {
-                    $(e).on('change', function ()
-                    {
-                        if ($(this).val() === '') {
-                            $this.find('[type="submit"]').attr('disabled', 'disabled')
-                        } else {
-                            $this.find('[type="submit"]').removeAttr('disabled');
-                        }
-                    })
-
-                }
-
-            }
-        }
-    })
+        formHandler(this);
+    });
 
 
     $(document).on('submit', 'form', function (e)
@@ -114,6 +85,40 @@ $(function ()
 
 });
 
+function formHandler(obj)
+{
+    $(obj).validate();
+
+    let rInputs = $(obj).find('[required]'), $this = $(obj);
+
+    for (const i in rInputs) {
+        if (Object.hasOwnProperty.call(rInputs, i)) {
+            let e = rInputs[i];
+            if (e instanceof HTMLInputElement) {
+                $(e).on('input', function ()
+                {
+                    if ($(this).val() === '') {
+                        $this.find('[type="submit"]').attr('disabled', 'disabled')
+                    } else {
+                        $this.find('[type="submit"]').removeAttr('disabled');
+                    }
+                })
+            } else if (e instanceof HTMLSelectElement) {
+                $(e).on('change', function ()
+                {
+                    if ($(this).val() === '') {
+                        $this.find('[type="submit"]').attr('disabled', 'disabled')
+                    } else {
+                        $this.find('[type="submit"]').removeAttr('disabled');
+                    }
+                })
+
+            }
+
+        }
+    }
+}
+
 function callAjax(url, param, method, obj = null)
 {
     const response = fetchCall(url, param, method, null, '');
@@ -133,6 +138,8 @@ function callAjax(url, param, method, obj = null)
                     let action = $(obj).data('action');
                     if (action === 'form') {
                         $('.product-form').html(json.data);
+
+                        formHandler($('.product-form').find('form.needs-validation')[0]);
                     } else {
                         $('.product-list').html(json.data);
                         $('.item-count').html($('.product-list table tr').length - 1);
