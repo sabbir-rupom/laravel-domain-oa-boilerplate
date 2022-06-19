@@ -47,6 +47,7 @@ You can retrieve enabled domain information through `\Illuminate\Support\Facades
 ### CSS / JS compile with Laravel mix
 
 CSS and Javascript files under resources folder in `Domains` will be compiled automatically with laravel-mix webpack command 
+
 **NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
 
 ## License
