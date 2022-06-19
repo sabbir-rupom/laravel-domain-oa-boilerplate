@@ -17,7 +17,10 @@
             <p>
                 To scale up your web application, developers need to thhink of various architecture strategy to implement their application logics in organized way, so that they could be managed and scaled up efficiently. <span class="fw-bold">Domain Oriented Architecture</span> is such a way to structure your application in terms of Domains.
             </p>
-            
+            <p>
+                Check the boilerplate documentation from 
+                <a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/README.md">Github Source</a>
+            </p>
         </div>
     </div>
 @endsection
