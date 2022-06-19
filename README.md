@@ -42,12 +42,12 @@ Do not forget to clear cache and optimize routes if any new major changes occure
 ### Domain Configuration
 
 Configuration parameter of each Domain should be defined in `app\Domains\DomainName\config\domain.php`
-
 You can retrieve enabled domain information through `\Illuminate\Support\Facades\Cache::get('app_domains')`
 
 ### CSS / JS compile with Laravel mix
 
-
+CSS and Javascript files under resources folder in `Domains` will be compiled automatically with laravel-mix webpack command 
+**NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
 
 ## License
 
