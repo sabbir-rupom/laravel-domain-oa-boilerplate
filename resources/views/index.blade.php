@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@section('title')
-    Home | Laravel DOA Boilerplate
-@endsection
-
 @section('content')
     <div class="card">
         <div class="card-body p-5">
