@@ -20,6 +20,7 @@ return [
         \App\Console\Commands\Domain\FormRequest::class,
         \App\Console\Commands\Domain\Seeder::class,
         \App\Console\Commands\Domain\Middleware::class,
+        \App\Console\Commands\Domain\Migration::class,
 
     ],
 

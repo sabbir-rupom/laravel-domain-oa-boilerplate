@@ -4,12 +4,13 @@ namespace App\Domains\Core\Services;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Cache;
+use InvalidArgumentException;
 
 class Bootstrap
 {
     protected $domains;
     protected $path;
-    private $kernel;
+    private $router;
 
     public function __construct()
     {
@@ -23,7 +24,7 @@ class Bootstrap
      */
     public function init(): Bootstrap
     {
-        $this->kernel = app(Kernel::class);
+        $this->router = app()['router'];
 
         if ($this->domains) {
             foreach ($this->domains as $d) {
@@ -112,17 +113,25 @@ class Bootstrap
      */
     public function setMiddlewares(array $config): Bootstrap
     {
-        if (isset($config['middleware']) && !empty($config['middleware'])) {
-            foreach ($config['middleware'] as $middleware) {
-                $this->kernel->pushMiddleware($middleware);
-            }
-        }
 
-        if (isset($config['middleware-group']) && !empty($config['middleware-group'])) {
-            foreach ($config['middleware-group'] as $group => $middleware) {
-                $this->kernel->appendMiddlewareToGroup($group, $middleware);
-            }
-        }
+        // if(empty($config)) {
+        //     return $this;
+        // }
+        // if (isset($config['middleware']) && !empty($config['middleware'])) {
+        //     foreach ($config['middleware'] as $group => $middleware) {
+        //         if(!class_exists($middleware)) {
+        //             throw new InvalidArgumentException("The [{$middleware}] middleware has not been defined.");
+        //         }
+        //         $this->router->middleware($group, $middleware);
+        //     }
+        // }
+        
+        // if (isset($config['middleware-group']) && !empty($config['middleware-group'])) {
+        //     foreach ($config['middleware-group'] as $group => $middleware) {
+        //         $this->router->pushMiddlewareToGroup($group, $middleware);
+        //     }
+        // }
+        // print_r($config); echo PHP_EOL;
 
         return $this;
     }
