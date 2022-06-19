@@ -50,6 +50,8 @@ CSS and Javascript files under resources folder in `Domains` will be compiled au
 
 **NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
 
+
+If you liked this project, don't forget to give a star rating to this project repository. :smile:
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
