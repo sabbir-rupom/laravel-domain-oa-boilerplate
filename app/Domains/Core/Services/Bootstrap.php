@@ -11,7 +11,17 @@ class Bootstrap
     protected $path;
     private $kernel;
 
-    public function init()
+    public function __construct()
+    {
+        $this->domains = [];
+    }
+
+    /**
+     * Init domain bootstrap methods
+     *
+     * @return Bootstrap
+     */
+    public function init(): Bootstrap
     {
         $this->kernel = app(Kernel::class);
 
@@ -22,7 +32,7 @@ class Bootstrap
             }
         }
 
-        return $this->domains;
+        return $this;
     }
 
     public function registerServices()
@@ -36,12 +46,17 @@ class Bootstrap
         // }
     }
 
-    public function get()
+    public function get(): array
     {
         return $this->domains;
     }
 
-    public static function domains()
+    /**
+     * Find and cache all active domains
+     *
+     * @return Bootstrap
+     */
+    public static function domains():Bootstrap
     {
         $app = new Self();
         $app->path = app_path('Domains');
@@ -76,12 +91,26 @@ class Bootstrap
 
     }
 
-    public function setViews(array $domain)
+    /**
+     * Register view paths for domain views 
+     *
+     * @param array $domain Active domain array
+     * @return Bootstrap
+     */
+    public function setViews(array $domain): Bootstrap
     {
         view()->addNamespace("{$domain['base']}_view", $domain['path'] . "/resources/views");
+
+        return $this;
     }
 
-    public function setMiddlewares(array $config)
+    /**
+     * Register middlewares from domain configuration settings
+     *
+     * @param array $config
+     * @return Bootstrap
+     */
+    public function setMiddlewares(array $config):Bootstrap
     {
         if (isset($config['middleware']) && !empty($config['middleware'])) {
             foreach ($config['middleware'] as $middleware) {
