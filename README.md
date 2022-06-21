@@ -25,8 +25,8 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
 
 On successful command run, a new domain[YourDomain] will be created under `project-root/app/Domains`. 
 
-.. |Initial Folder Structure of a Domain| image:: https://raw.githubusercontent.com/sabbir-rupom/laravel-domain-oa-boilerplate/main/public/capture.png
-
+**Initial Folder Structure of a Domain**
+<p align="center"><img src="https://raw.githubusercontent.com/sabbir-rupom/laravel-domain-oa-boilerplate/main/public/capture.png"></p> 
 
 ## Development Guide
 
