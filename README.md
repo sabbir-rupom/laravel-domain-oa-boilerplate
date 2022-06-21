@@ -46,7 +46,7 @@ On successful command run, a new domain[YourDomain] will be created under `proje
 
 Domain core service will automatically detect all the domain changes and will initialize each domain routes, migrations, seeders etc. during application run.
 
-Do not forget to clear cache and optimize routes if any new major changes occured inside Domains.
+**NOTE**: Do not forget to clear cache and optimize routes if any new major changes occured inside Domains.
 
 ### Domain Configuration
 
