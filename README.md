@@ -14,7 +14,11 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
 - Clone the git repository `git clone https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate.git`
 - Install & Update libraries with `composer update`
 - Rename and set your Server Configuration in `.env`.
-- Run Migration and Seeder `php artisan migrate:refresh --seed` 
+- Excecute following commands: 
+    - `php artisan key:generate`
+    - `php artisan cache:clear`
+    - `php artisan optimize`
+    - [Optional] `php artisan migrate:refresh --seed`  
 
 **NOTE**: `project-root/app/Domains/Core` is your primary domain, thus all other domains of `App\Domains\*` are bootstraped through here. So, only change the files under `Domans/Core` if you know what you are doing.  
 
