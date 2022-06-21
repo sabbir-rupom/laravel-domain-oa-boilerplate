@@ -8,7 +8,7 @@
 
 # Laravel Domain Oriented Architecture Boilerplate
 
-Laravel boilerplate for building Domain Oriented Architecture based web application. (Current: Laravel 8.\*)
+Laravel boilerplate for building Domain Oriented Architecture based web application. (Current: Laravel 9.\*)
 
 ## Installation
 - Clone the git repository `git clone https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate.git`

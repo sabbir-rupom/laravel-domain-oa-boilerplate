@@ -1,11 +1,5 @@
 {
     "private": true,
-    "name": "rpm-admin",
-    "version": "1.0.0",
-    "browserslist": [
-        "last 2 version",
-        "> 2%"
-    ],
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -16,23 +10,11 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "@popperjs/core": "^2.11.4",
-        "axios": "^0.26",
-        "core-js": "^3.21.1",
-        "laravel-mix": "^6.0.43",
+        "axios": "^0.25",
+        "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.3.5",
-        "resolve-url-loader": "^5.0.0",
-        "rtlcss": "^3.0.0",
-        "sass": "^1.49.9",
-        "sass-loader": "^12.6.0"
-    },
-    "dependencies": {
-        "autoprefixer": "10.4.5",
-        "bootstrap": "^5.1.3",
-        "jquery": "^3.5.1",
-        "jquery-validation": "^1.19.3",
-        "sweetalert2": "^10.10.4",
-        "toastr": "^2.1.4"
+        "postcss": "^8.1.14",
+        "sass": "^1.52.3",
+        "sass-loader": "^12.1.0"
     }
 }
