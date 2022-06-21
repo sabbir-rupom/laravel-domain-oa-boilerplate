@@ -16,10 +16,19 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
 - Rename and set your Server Configuration in `.env`.
 - Run Migration and Seeder `php artisan migrate:refresh --seed` 
 
-## Development Guide
+**NOTE**: `project-root/app/Domains/Core` is your primary domain, thus all other domains of `App\Domains\*` are bootstraped through here. So, only change the files under `Domans/Core` if you know what you are doing.  
+
+## Create New Domain
 
 * Enter command to create new Domain space: `php artisan domain:new DomainName`
     * For REST-API, you can hit command like: `php artisan domain:new YourDomain --api`
+
+On successful command run, a new domain[YourDomain] will be created under `project-root/app/Domains`. 
+
+.. |Initial Folder Structure of a Domain| image:: https://raw.githubusercontent.com/sabbir-rupom/laravel-domain-oa-boilerplate/main/public/capture.png
+
+
+## Development Guide
 
 * Create new controller: `php artisan domain:new:controller DomainName ControllerName`
 
