@@ -3,12 +3,11 @@
 <p align="center">
 <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-v8-f05340.svg" alt="Laravel Version"></a>
 <a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/composer.json"><img src="https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg" alt="PHP Badge"></a>
-<a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
 </p>
 
 # Laravel Domain Oriented Architecture Boilerplate
 
-Laravel boilerplate for building Domain Oriented Architecture based web application. (Current: Laravel 9.\*)
+Laravel boilerplate for building Domain Oriented Architecture based web application. (Current: Laravel 8.\*)
 
 ## Installation
 - Clone the git repository `git clone https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate.git`
@@ -41,7 +40,7 @@ On successful command run, a new domain[YourDomain] will be created under `proje
 * Create new middleware: `php artisan domain:new:middleware DomainName MiddlewareName`
 
 * Create new model: `php artisan domain:new:model DomainName ModelName`
-    * If you wish to create a create-table-migration file as well: `php artisan domain:new:model DomainName ModelName -m`
+    * If you wish to create a create-table-migration file as well: `php artisan domain:new:model DomainName ModelName --m`
 
 * Create new migration: `php artisan domain:new:migration DomainName name_table_migration`
     * You can use the options like `--create` , `--table` , `--path` command options like the existing `make:migration` command structure
@@ -62,12 +61,3 @@ You can retrieve enabled domain information through `\Illuminate\Support\Facades
 CSS and Javascript files under resources folder in `Domains` will be compiled automatically with laravel-mix webpack command 
 
 **NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
-
-### Example
-
-* Check the branch [Example - 1](https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/tree/example-1.0) for study.
-
-If you liked this project, don't forget to give a star rating to this project repository. :smile:
-## License
-
-This project is licensed under the [MIT License](LICENSE).
