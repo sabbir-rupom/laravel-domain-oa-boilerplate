@@ -1,5 +1,11 @@
 {
     "private": true,
+    "name": "laravel-doa",
+    "version": "1.0.0",
+    "browserslist": [
+        "last 2 version",
+        "> 2%"
+    ],
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -10,11 +16,16 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.25",
-        "laravel-mix": "^6.0.6",
+        "axios": "^0.26",
+        "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "sass": "^1.52.3",
-        "sass-loader": "^12.1.0"
+        "postcss": "^8.3.5",
+        "resolve-url-loader": "^5.0.0",
+        "rtlcss": "^3.0.0",
+        "sass": "^1.49.9",
+        "sass-loader": "^12.6.0"
+    },
+    "dependencies": {
+        "autoprefixer": "10.4.5"
     }
 }

@@ -29,8 +29,8 @@ mix.copyDirectory(folder.src + "images", out);
  */
 mix.sass('resources/scss/app.scss', folder.dist_assets + "css").options({ processCssUrls: false }).minify(folder.dist_assets + "css/app.css");
 
-mix.combine('resources/js/app.js', folder.dist_assets + "js/app.js");
-mix.minify([folder.dist_assets + "js/app.js"]);
+mix.combine('resources/js/app.js', folder.dist_assets + "js/app.js").minify([folder.dist_assets + "js/app.js"]);
+mix.combine('resources/js/plugin/demo.js', folder.dist_assets + "js/plugin/demo.js").minify([folder.dist_assets + "js/plugin/demo.js"]);
 
 
 /**

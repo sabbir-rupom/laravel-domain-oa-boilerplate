@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Domains\Core\Services;
+namespace App\Core\System;
 
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Cache;
-use InvalidArgumentException;
 
 class Bootstrap
 {
     protected $domains;
     protected $path;
-    private $router;
 
     public function __construct()
     {
@@ -29,24 +26,17 @@ class Bootstrap
         if ($this->domains) {
             foreach ($this->domains as $d) {
                 $this->setViews($d);
-                $this->setMiddlewares($d['config']);
             }
         }
 
         return $this;
     }
 
-    public function registerServices()
-    {
-        // foreach ($this->domains as $d) {
-
-        //     $domainProviderClass = '\App\Domains\\' . $d['name'] . '\\Providers\\DomainServiceProvider';
-        //     if (class_exists($domainProviderClass)) {
-        //         dd('1111');
-        //     }
-        // }
-    }
-
+    /**
+     * Get activated domain list as array
+     *
+     * @return array
+     */
     public function get(): array
     {
         return $this->domains;
@@ -73,7 +63,7 @@ class Bootstrap
 
                 $domainName = basename($path);
 
-                if (isset($config['enable']) && !$config['enable'] && strtolower($domainName) !== 'core') {
+                if (isset($config['enable']) && !$config['enable']) {
                     continue;
                 }
 
@@ -101,37 +91,6 @@ class Bootstrap
     public function setViews(array $domain): Bootstrap
     {
         view()->addNamespace("{$domain['base']}_view", $domain['path'] . "/resources/views");
-
-        return $this;
-    }
-
-    /**
-     * Register middlewares from domain configuration settings
-     *
-     * @param array $config
-     * @return Bootstrap
-     */
-    public function setMiddlewares(array $config): Bootstrap
-    {
-
-        // if(empty($config)) {
-        //     return $this;
-        // }
-        // if (isset($config['middleware']) && !empty($config['middleware'])) {
-        //     foreach ($config['middleware'] as $group => $middleware) {
-        //         if(!class_exists($middleware)) {
-        //             throw new InvalidArgumentException("The [{$middleware}] middleware has not been defined.");
-        //         }
-        //         $this->router->middleware($group, $middleware);
-        //     }
-        // }
-        
-        // if (isset($config['middleware-group']) && !empty($config['middleware-group'])) {
-        //     foreach ($config['middleware-group'] as $group => $middleware) {
-        //         $this->router->pushMiddlewareToGroup($group, $middleware);
-        //     }
-        // }
-        // print_r($config); echo PHP_EOL;
 
         return $this;
     }

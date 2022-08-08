@@ -1,1 +1,1 @@
-// silence is golden
+console.log('demo.js is working');

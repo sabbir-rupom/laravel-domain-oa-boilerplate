@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Domains\Core\Services\Bootstrap;
+use App\Core\System\Bootstrap;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Core\Traits;
+namespace App\Core\Traits;
 
 trait ResponseJSON
 {

@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use App\Core\System\Bootstrap;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-use App\Domains\Core\Services\Bootstrap;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**
@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Activate domain system  
         Bootstrap::domains()->init();
-
     }
 }

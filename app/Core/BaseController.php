@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domains\Core\Http\Controllers;
+namespace App\Core\Http\Controllers;
 
-use App\Domains\Core\Traits\ResponseJSON;
+use App\Core\Traits\ResponseJSON;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 
