@@ -3,6 +3,7 @@
 <p align="center">
 <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-v8-f05340.svg" alt="Laravel Version"></a>
 <a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/composer.json"><img src="https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg" alt="PHP Badge"></a>
+<a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
 </p>
 
 # Laravel Domain Oriented Architecture Boilerplate
@@ -61,3 +62,9 @@ You can retrieve enabled domain information through `\Illuminate\Support\Facades
 CSS and Javascript files under resources folder in `Domains` will be compiled automatically with laravel-mix webpack command 
 
 **NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
+
+
+If you liked this project, don't forget to give a star rating to this project repository. :smile:
+## License
+
+This project is licensed under the [MIT License](LICENSE).
