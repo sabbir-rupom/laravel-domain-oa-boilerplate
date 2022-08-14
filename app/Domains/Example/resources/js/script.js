@@ -1,0 +1,1 @@
+console.log('example domain script is working')
