@@ -20,7 +20,7 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
     - `php artisan optimize`
     - [Optional] `php artisan migrate:refresh --seed`  
 
-**NOTE**: `project-root/app/Domains/Core` is your primary domain, thus all other domains of `App\Domains\*` are bootstraped through here. So, only change the files under `Domans/Core` if you know what you are doing.  
+**NOTE**: `.../project-root/app/Core/*` holds the *Domain Mechanism* of this project.  
 
 ## Create New Domain
 
