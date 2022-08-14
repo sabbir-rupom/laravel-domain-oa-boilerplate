@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Http\Controllers;
+namespace App\Core;
 
 use App\Core\Traits\ResponseJSON;
 use App\Http\Controllers\Controller;

@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
 
             /**
-             * Init domain configuration
+             * Fetch domain list
              */
             $domains = Bootstrap::domains()->get();
 
@@ -51,7 +51,7 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/web.php');
 
                     // Include all web route files from domain
-                    $this->includeRequired('web', $domains);
+                    $this->mapDomainRoutes('web', $domains);
                 });
 
             Route::prefix('api')
@@ -61,7 +61,7 @@ class RouteServiceProvider extends ServiceProvider
                     require base_path('routes/api.php');
 
                     // Include all api route files from domain
-                    $this->includeRequired('api', $domains);
+                    $this->mapDomainRoutes('api', $domains);
                 });
         });
     }
@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
      * @param [type] $domains
      * @return void
      */
-    protected function includeRequired(string $guard, $domains)
+    protected function mapDomainRoutes(string $guard, $domains)
     {
         if (is_array($domains) && count($domains) > 0) {
             foreach ($domains as $d) {

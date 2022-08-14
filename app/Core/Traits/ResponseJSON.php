@@ -7,7 +7,6 @@ trait ResponseJSON
     private $jsonResponse = [
         'success' => false,
         'message' => "",
-        'html' => false,
         'data' => [],
     ];
 
