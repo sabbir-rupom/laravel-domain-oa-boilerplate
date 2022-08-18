@@ -1,7 +1,7 @@
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
-<a href="https://laravel.com"><img src="https://img.shields.io/badge/laravel-v9.*-red" alt="Laravel Version"></a>
+<a href="https://laravel.com"><img src="https://img.shields.io/badge/laravel-v9-red" alt="Laravel Version"></a>
 <a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/composer.json"><img src="https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg" alt="PHP Badge"></a>
 <a href="https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
 </p>
