@@ -14,21 +14,21 @@ class DomainSeeder extends Seeder
      */
     public function run()
     {
-      $domains = Bootstrap::domains()->get();
+        $domains = Bootstrap::domains()->get();
 
-      $this->command->info(PHP_EOL . 'Scanning for domain seeders: ');
+        $this->command->info(PHP_EOL . 'Scanning for domain seeders: ');
 
-      if (is_array($domains) && count($domains) > 0) {
-          foreach ($domains as $d) {
-              if (is_dir($d['path'] . "/database/seeders/")) {
+        if (is_array($domains) && count($domains) > 0) {
+            foreach ($domains as $d) {
+                if (is_dir($d['path'] . "/database/seeders/")) {
 
-                  $this->findThenCallSeeders($d['path'] . "/database/seeders/", $this->getNamespace($d['name']));
+                    $this->findThenCallSeeders($d['path'] . "/database/seeders/", $this->getNamespace($d['name']));
 
-              }
-          }
-      }
+                }
+            }
+        }
 
-      $this->command->info('Scan completed' . PHP_EOL);
+        $this->command->info('Scan completed' . PHP_EOL);
     }
 
     /**

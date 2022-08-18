@@ -21,6 +21,7 @@ return [
         \App\Console\Commands\Domain\Seeder::class,
         \App\Console\Commands\Domain\Middleware::class,
         \App\Console\Commands\Domain\Migration::class,
+        \App\Console\Commands\RefreshCache::class,
 
     ],
 
