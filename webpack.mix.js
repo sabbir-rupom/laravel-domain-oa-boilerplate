@@ -16,6 +16,10 @@ const folder = {
  * ------------------------------------------------------------------------------
  */
 
+// copy all fonts
+var out = folder.dist_assets + "fonts";
+mix.copyDirectory(folder.src + "fonts", out);
+
 // copy all images
 var out = folder.dist_assets + "images";
 mix.copyDirectory(folder.src + "images", out);
@@ -30,7 +34,6 @@ mix.copyDirectory(folder.src + "images", out);
 mix.sass('resources/scss/app.scss', folder.dist_assets + "css").options({ processCssUrls: false }).minify(folder.dist_assets + "css/app.css");
 
 mix.combine('resources/js/app.js', folder.dist_assets + "js/app.js").minify([folder.dist_assets + "js/app.js"]);
-mix.combine('resources/js/plugin/demo.js', folder.dist_assets + "js/plugin/demo.js").minify([folder.dist_assets + "js/plugin/demo.js"]);
 
 
 /**

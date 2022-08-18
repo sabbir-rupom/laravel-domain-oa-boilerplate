@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('example') }}">Example</a>
+                        <a class="nav-link" href="{{ route('product') }}">Product</a>
                     </li>
                 </ul>
             </div>
