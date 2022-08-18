@@ -16,8 +16,7 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
 - Rename and set your Server Configuration in `.env`.
 - Excecute following commands: 
     - `php artisan key:generate`
-    - `php artisan cache:clear`
-    - `php artisan optimize`
+    - `php artisan clear:all`  # combination of cache:clear & optimize
     - [Optional] `php artisan migrate:refresh --seed`  
 
 **NOTE**: `.../project-root/app/Core/*` holds the *Domain Mechanism* of this project.  
