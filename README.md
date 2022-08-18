@@ -64,7 +64,7 @@ CSS and Javascript files under resources folder in `Domains` will be compiled au
 
 ### Example
 
-* Check the branch [Example - 1](https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/tree/example-1.0) for study.
+* Check the branch [Example - 1](https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/tree/example-1.0) for study. ( with old laravel 8 )
 
 
 If you liked this project, don't forget to give a star rating to this project repository. :smile:
