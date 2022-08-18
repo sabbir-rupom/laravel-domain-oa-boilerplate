@@ -63,6 +63,10 @@ CSS and Javascript files under resources folder in `Domains` will be compiled au
 
 **NOTE**: Do not change the `webpack.mix.js` file arbitrarily, the default mix configuration may hamper the auto domain-resource compilation process.
 
+### Example
+
+* Check the branch [Example - 1](https://github.com/sabbir-rupom/laravel-domain-oa-boilerplate/tree/example-1.0) for study.
+
 
 If you liked this project, don't forget to give a star rating to this project repository. :smile:
 ## License
