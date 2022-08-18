@@ -17,7 +17,7 @@ Laravel boilerplate for building Domain Oriented Architecture based web applicat
 - Excecute following commands: 
     - `php artisan key:generate`
     - `php artisan clear:all`  # combination of cache:clear & optimize
-    - [Optional] `php artisan migrate:refresh --seed`  
+    - `php artisan migrate:fresh --seed` # Optional
 
 **NOTE**: `.../project-root/app/Core/*` holds the *Domain Mechanism* of this project.  
 
